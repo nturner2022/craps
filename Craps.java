@@ -26,13 +26,21 @@ public class Craps {
             } else if (roll == 2 || roll == 3 || roll == 12){
                 System.out.println("You rolled a " +roll + ". Sorry, you lose!");
             } else {
-                
+                int count = 0;
+                int point = roll;
+                while (roll != 7 && point != roll || count == 0){
+                    count ++;
+                    System.out.println("You rolled a " +roll +". Press enter to roll again");
+                    String secondEnter = in.next();
+                    int secondRoll = dice.dieRoll();
+                    if (secondRoll == 7) {
+                        System.out.println("You rolled a" +roll +"! Sorry, you lose!");
+                    } else if (secondRoll == roll){
+                        System.out.println("You rolled a " +roll +" again! Congrats, you win");
+                    }
+                }
             }
         }
-        
-        
-        
-       
 
     }
 
