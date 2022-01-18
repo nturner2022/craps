@@ -7,7 +7,7 @@ public class Craps {
         System.out.println("Welcome to the game Craps! Would you like to play? (Yes/No)");
         Scanner in = new Scanner(System.in);
         String initiateGame = in.next();
-        Die dice = new Die();
+        Die dice = new Die(); //makes die object
         if (initiateGame.equalsIgnoreCase("No")){
             System.out.println("Okay! Hope to see you soon!");
         } else {
@@ -22,36 +22,37 @@ public class Craps {
                 System.out.println();
             }
         }
-        while (initiateGame.equalsIgnoreCase("Yes")){
+        while (initiateGame.equalsIgnoreCase("Yes")){ //uses user input to allow program to run when they want it to
             System.out.println("Press <Enter> to roll the dice");
             Scanner enterToRoll = new Scanner(System.in);
-            enterToRoll.nextLine();
+            enterToRoll.nextLine(); //allows the enter key to be the input
             int roll = dice.dieRoll();
-            if (roll == 7 || roll == 11){
-                System.out.println("You rolled a " +roll +"! Congrats, you win!");
-            } else if (roll == 2 || roll == 3 || roll == 12){
-                System.out.println("You rolled a " +roll + ". Sorry, you lose!");
-            } else {
+            if (roll == 7 || roll == 11){ //checks for automatic win
+                System.out.println("You rolled a " +roll +"! Automatic win! Congrats, you win!");
+            } else if (roll == 2 || roll == 3 || roll == 12){ //checks for automatic loss
+                System.out.println("You rolled a " +roll + ". Automatic loss! Sorry, you lose!");
+            } else { //starts point count
                 int count = 0;
                 int point = roll;
                 while (roll != 7 && point != roll || count == 0){
-                    count ++;
+                    count ++; //point count
                     System.out.println("You rolled a " +roll +". Press enter to roll again");
                     enterToRoll.nextLine();
-                    roll = dice.dieRoll();
+                    roll = dice.dieRoll(); //second roll
                     if (roll == 7) {
-                        System.out.println("Point count:" +count);
-                        System.out.println("You rolled a " +roll +"! Sorry, you lose!");
+                        System.out.println("Point count: " +count);
+                        System.out.println("Sorry, you lose! You rolled a " +roll +" before you rolled a " +point +" again!");
                     } else if (roll == point){
-                        System.out.println("Point count:" +count);
+                        System.out.println("Point count: " +count);
                         System.out.println("You rolled a " +roll +" again! Congrats, you win");
                     }
                 }
             }
             System.out.println("Game over! Would you like to play again?");
             String response = in.next();
-            if (response.equalsIgnoreCase("No")){
-                break;
+            if (response.equalsIgnoreCase("No")){ 
+                System.out.println("Thanks for playing!");
+                break; //ends program
             }
         }
 
