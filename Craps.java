@@ -54,6 +54,8 @@ public class Craps {
                 System.out.println("Thanks for playing!");
                 break; //ends program
             }
+            in.close();
+            enterToRoll.close();
         }
 
     }
